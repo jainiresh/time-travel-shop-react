@@ -1,0 +1,68 @@
+.container {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000;
+    color: #00ffcc;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .header {
+    text-align: center;
+    border-bottom: 4px dashed #ff00ff;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 3rem;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #ff00ff;
+  }
+  
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .productCard {
+    background: linear-gradient(135deg, #ff00ff, #00ffcc);
+    border: 2px solid #ffcc00;
+    padding: 15px;
+    width: 220px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .productCard:hover {
+    transform: scale(1.1);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.8);
+  }
+  
+  .productCard h2 {
+    font-size: 1.8rem;
+    color: #ffcc00;
+    margin-bottom: 10px;
+  }
+  
+  .productCard p {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .productCard .price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #00ffcc;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    padding-top: 10px;
+    color: #ffcc00;
+    border-top: 4px dashed #ff00ff;
+  }
+  
