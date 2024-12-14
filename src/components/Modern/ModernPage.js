@@ -1,57 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import styles from '../../styles/ModernProducts.module.css';
-
-const ModernProducts = [
-  {
-    id: 1,
-    name: 'Smartwatch Pro',
-    description: 'An advanced smartwatch with health tracking and 7-day battery life.',
-    price: '$399',
-    image: '/modern_samsungwatch.webp',
-  },
-  {
-    id: 2,
-    name: 'Wireless Earbuds',
-    description: 'Crystal-clear sound and noise cancellation.',
-    price: '$199',
-    image: '/modern_airpods.webp',
-  },
-  {
-    id: 3,
-    name: '4K Ultra Monitor',
-    description: 'Stunning 4K visuals with a 120Hz refresh rate.',
-    price: '$599',
-    image: '/modern_monitor.webp',
-  },
-  {
-    id: 11,
-    name: 'Smartwatch Pro',
-    description: 'An advanced smartwatch with health tracking and 7-day battery life.',
-    price: '$399',
-    image: '/modern_samsungwatch.webp',
-  },
-  {
-    id: 22,
-    name: 'Wireless Earbuds',
-    description: 'Crystal-clear sound and noise cancellation.',
-    price: '$199',
-    image: '/modern_airpods.webp',
-  },
-  {
-    id: 33,
-    name: '4K Ultra Monitor',
-    description: 'Stunning 4K visuals with a 120Hz refresh rate.',
-    price: '$599',
-    image: '/modern_monitor.webp',
-  },
-];
+import React, { useEffect, useState } from "react";
+import styles from "../../styles/ModernProducts.module.css";
+import { useSelector } from "react-redux";
 
 export default function ModernPage() {
+  const ModernProducts = useSelector((state) => state.musicMetadataReducer);
   const [environment, setEnvironment] = useState(null);
-
+  const [selectedProduct, setSelectedProduct] = useState(null); // To track the clicked product
+  const [isPlaying, setIsPlaying] = useState(false); // To toggle play state
+  console.log(ModernProducts);
+  
   useEffect(() => {
-    setEnvironment(process.env.REACT_APP_OLD_PRODUCTS || 'default'); // REACT_APP_OLD_PRODUCTS should be in .env file
+    setEnvironment(process.env.REACT_APP_OLD_PRODUCTS || "default");
   }, []);
+
+  const handleCardClick = (product) => {
+    setSelectedProduct(product); // Set the selected product for the modal
+    setIsPlaying(true); // Start the song playing animation
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null); // Close the modal
+    setIsPlaying(false); // Stop the song playing animation
+  };
 
   return (
     <div className={styles.container}>
@@ -60,18 +30,19 @@ export default function ModernPage() {
       </header>
       <main className={styles.main}>
         {ModernProducts.map((product) => (
-          <div key={product.id} className={styles.productCard}>
+          <div
+            key={product.id}
+            className={styles.productCard}
+            onClick={() => handleCardClick(product)} // Handle click event
+          >
             <img
-              className={styles.productImage}
-              src={product.image}
-              width={300}
-              height={300}
-              alt="modernImage"
+              src={product.imageUrl ?? "/noImage.png"}
+              className={styles.imageTint}
+              alt={product.title}
             />
             <div className={styles.productDetails}>
-              <h2>{product.name}</h2>
-              <p>{product.description}</p>
-              <span className={styles.price}>{product.price}</span>
+              <h2>{product.title}</h2>
+              <span>{product.artistDetails["name"]}</span>
             </div>
           </div>
         ))}
@@ -79,6 +50,35 @@ export default function ModernPage() {
       <footer className={styles.footer}>
         <p>© 2024 Modern Products Store</p>
       </footer>
+
+      {selectedProduct && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <button className={styles.closeButton} onClick={closeModal}>
+              &times;
+            </button>
+            <div className={styles.modalImageWrapper}>
+              <img
+                src={selectedProduct.imageUrl ?? "/noImage.png"}
+                alt={selectedProduct.title}
+                className={styles.rotatingImage} // Rotating circular image
+              />
+              {isPlaying && (
+                <div className={styles.playingDots}>
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                </div>
+              )}
+            </div>
+
+            <div className={styles.modalDetails}>
+              <h2>{selectedProduct.title}</h2>
+              <p>{selectedProduct.artistDetails["name"]}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

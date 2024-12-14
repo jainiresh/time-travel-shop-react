@@ -38,7 +38,10 @@
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    width: min-content;
+    width: 300px; /* Fixed width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .productCard:hover {
@@ -46,36 +49,40 @@
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
   }
   
-  .productImage {
+  .imageTint {
+    width: 250px;
+    height: 250px;
+    border-radius: 10%;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: 100%; */
-    /* height: 200px; */
-    /* object-fit: cover; */
+    margin-top: 20px; 
+  }
+  
+  .productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   .productDetails {
     padding: 20px;
+    text-align: center;
   }
   
   .productDetails h2 {
     font-size: 1.8rem;
     margin-bottom: 10px;
     color: #56ccf2;
+    word-wrap: break-word; /* Ensure long titles wrap */
   }
   
-  .productDetails p {
+  .productDetails span {
     font-size: 1rem;
     color: #dcdcdc;
-    margin-bottom: 15px;
   }
   
-  .productDetails .price {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #2f80ed;
-  }
   
   .footer {
     text-align: center;
@@ -98,3 +105,116 @@
     }
   }
   
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.modalContent {
+  background: #1a2334;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #000000;
+  cursor: pointer;
+}
+
+
+.modalImageWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.rotatingImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.modalDetails h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+.modalDetails p {
+  font-size: 1rem;
+  color: #666666;
+}
+
+.playingDots {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  display: flex;
+  gap: 5px; 
+}
+
+.playingDots span {
+  display: inline-block;
+  opacity: 0.2; 
+  animation: moveDots 1.5s infinite;
+}
+
+
+.playingDots span:nth-child(1) {
+  animation-delay: 0s;
+}
+.playingDots span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.playingDots span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+
+@keyframes moveDots {
+  0%, 100% {
+    opacity: 0.2; 
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1; 
+    transform: translateY(-10px); 
+  }
+}
