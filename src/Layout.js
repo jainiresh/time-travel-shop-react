@@ -1,5 +1,5 @@
 import VintagePage from './components/Vintage/VintagePage';
-import { Provider, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useIsDevCycleInitialized, useVariableValue, withDevCycleProvider } from '@devcycle/react-client-sdk';
 import ModernPage from './components/Modern/ModernPage';
 import RetroPage from './components/Retro/RetroPage';
