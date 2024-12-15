@@ -5,22 +5,13 @@
   position: relative;
 }
 
-.slides html,
-.slides body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 3vmin;
-}
-
-html {
+.slides html {
   background: #151515;
   color: #fff;
   overflow: hidden;
 }
 
-body {
+.slides body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,6 +41,9 @@ body {
 
     &:hover {
       opacity: 1;
+      transition: linear 0.1s;
+      scale: 1.5;
+      cursor: pointer;
     }
 
     &:focus {
@@ -84,18 +78,19 @@ body {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  /* transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease-in-out; */
-  opacity: 0.7;
+  transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease-in-out;
+  opacity: 0.1;
 
   display: grid;
   align-content: center;
 
   transform-style: preserve-3d;
-  transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
+  transform: perspective(750px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
 }
 
 .slide[data-active] .slideContent {
   opacity: 1;
+  transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease-in-out;
 }
 
 
@@ -145,6 +140,7 @@ body {
 .slide[data-active] {
   z-index: 2;
   pointer-events: auto;
+  transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease-in-out;
 
   .slideBackground {
     opacity: 0.2;

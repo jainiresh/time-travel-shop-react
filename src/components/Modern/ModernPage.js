@@ -21,7 +21,7 @@ export default function ModernPage() {
   
 
   return (
-    <div className={styles.container}>
+   <div className={styles.container}>
       <header className={styles.header}>
         <h1>The Modern Music Store</h1>
         <span style={{fontSize:'1.4rem'}}>Time : {currentTime.toLocaleTimeString()} - {currentTime.toDateString()}</span>

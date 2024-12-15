@@ -1,5 +1,5 @@
 import React from 'react';
-import './Carousel.css'; // Make sure to copy the styles into Carousel.css
+import styles from './Carousel.css'; // Make sure to copy the styles into Carousel.css
 
 function Carousel({slides}) {
   const initialState = {
@@ -70,8 +70,10 @@ function Carousel({slides}) {
     const active = offset === 0 ? true : null;
     const ref = useTilt(active);
 
+    console.log('Offset is ', offset)
+
     return (
-      <div
+      (<div
         ref={ref}
         className="slide"
         data-active={active}
@@ -98,7 +100,7 @@ function Carousel({slides}) {
             <p className="slideDescription">{slide.description}</p>
           </div>
         </div>
-      </div>
+      </div>)
     );
   }
 
