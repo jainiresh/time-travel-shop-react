@@ -1,6 +1,6 @@
 .container {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #141e30, #243b55);
+    /* background: linear-gradient(to bottom, #141e30, #243b55); */
     color: #ffffff;
     min-height: 100vh;
     padding: 20px;

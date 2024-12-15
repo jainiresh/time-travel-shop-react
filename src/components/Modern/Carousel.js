@@ -80,12 +80,12 @@ function Carousel({slides}) {
           "--dir": offset === 0 ? 0 : offset > 0 ? 1 : -1,
         }}
       >
-        <div
+        {/* <div
           className="slideBackground"
           style={{
             backgroundImage: `url('${slide.image}')`,
           }}
-        />
+        /> */}
         <div
           className="slideContent"
           style={{
