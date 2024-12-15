@@ -1,5 +1,5 @@
 import VintagePage from './components/Vintage/VintagePage';
-import { Provider, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useIsDevCycleInitialized, useVariableValue, withDevCycleProvider } from '@devcycle/react-client-sdk';
 import ModernPage from './components/Modern/ModernPage';
 import RetroPage from './components/Retro/RetroPage';
@@ -8,7 +8,7 @@ function Layout() {
   const dispatch = useDispatch();
  
   // const year = useVariableValue('time-machine', '1900');
-  const year = 2002;
+  const year = 2024;
   dispatch({type:'POPULATE_DEVCYCLE_DATA_SAGA', payload:year});
 
   console.log('The devcycle values is ')
