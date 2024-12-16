@@ -175,3 +175,31 @@
     height: 180px;
   }
 }
+
+
+
+.refresh {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  color:  #e74c3c; 
+}
+
+.refreshButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px; 
+  border-radius: 50%; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.refreshButton:hover {
+  transform: scale(1.1);
+}
+
+.refreshButton:active {
+  transform: scale(0.95);
+}

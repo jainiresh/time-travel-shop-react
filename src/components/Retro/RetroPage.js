@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { youtubeSearchApi } from "../../api/youtubeSearchApi";
 import RetroLoader from "../Loaders/Retro/RetroLoader";
 import VintageLoader from "../Loaders/Vintage/VintageLoader";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 export default function RetroPage() {
   const ModernProducts = useSelector((state) => state.musicMetadataReducer);
@@ -31,11 +32,21 @@ export default function RetroPage() {
   function handleIframeClose(){
     setYoutubeVideoDetails(null)
   }
+  const refresh = () => {
+    window.location.reload();
+  };
+
   return (
     <>
     <VintageLoader hidden={!loading}/>
     {!loading &&
     <div className={styles.container}>
+      <div className={styles.refresh}>
+              <div onClick={refresh} className={styles.refreshButton}>
+                <RefreshIcon />
+              </div>
+              <span>Fetch new set of songs</span>
+            </div>
       <div className={styles.marquee}>
         <span>Feel the Retro Vibes of Music 🎶 | Timeless Classics | A Journey Back in Time...</span>
       </div>
