@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import styles from '../../styles/OldProducts.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { youtubeSearchApi } from "../../api/youtubeSearchApi";
-import VintageLoader from '../Loaders/Vintage/VintageLoader';
 import RetroLoader from '../Loaders/Retro/RetroLoader';
 
 
@@ -44,7 +43,7 @@ export default function VintagePage() {
       />
       <header className={styles.header} style={{ display: 'flex' }}>
         <h1 style={{ width: '95%' }}>Derby's Vintage Music shop</h1>
-        <div style={{fontSize:'2rem'}}>Current Year : {devCycleReducer.year}</div>
+        <div style={{fontSize:'2rem', fontFamily:'monospace'}}>Current Year : {devCycleReducer.year}</div>
       </header>
       <main className={styles.main}>
         {musicMetadataReducer.map((product) => (

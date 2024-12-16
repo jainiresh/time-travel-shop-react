@@ -2,20 +2,30 @@ import axios from 'axios';
 import { call, put, takeLatest, takeLeading } from 'redux-saga/effects'
 
 function* getMusicByYearApiCall(year) {
-  const randomNumber = 20;
-  // Math.floor(Math.random() * (100 - 10 + 1)) + 10;
+  // Generate a random number in the range [20, 25]
+  const randomNumber = Math.floor(Math.random() * (25 - 20 + 1)) + 20;
 
-  console.log('random Number ', randomNumber)
-  const response = yield call(fetch, `https://musicbrainz.org/ws/2/recording?query=date:${year}&limit=${randomNumber}`, {
-    headers: {
-      'Accept': 'application/json'
+  // Generate a random offset in the range [5, 10]
+  const offset = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+
+  console.log('random Number (limit):', randomNumber);
+  console.log('random Offset:', offset);
+
+  const response = yield call(
+    fetch,
+    `https://musicbrainz.org/ws/2/recording?query=date:${year}&limit=${randomNumber}&offset=${offset}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+      }
     }
-  });
-  const data = yield response.json();
-  console.log('Api response');
-  return data.recordings;
+  );
 
+  const data = yield response.json();
+  console.log('API response:', data);
+  return data.recordings;
 }
+
 
 function* devcycleDataPopulator(action) {
   try {

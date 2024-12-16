@@ -9,7 +9,7 @@ function Layout() {
   const dispatch = useDispatch();
 
   // const year = useVariableValue('time-machine', '1900');
-  const year = 1955;
+  const year = 1975;
   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
 
   console.log('The devcycle values is ');
@@ -30,28 +30,27 @@ function Layout() {
 
   return (
     <>
-      <div className="timelineWrapper">
-         <div style={{display:'flex', alignItems:'baseline', justifyContent:'space-between', gap:'0.1rem', alignmentBaseline:'central', width:'100%'}}>
-          <span style={{fontSize:'1rem', color:'black', }}>{minYear}</span>
-        <div className="timeline">
-          {/* <div
-            className="indicator"
-            style={{ left: `${progressPercentage}%` }}
-            title={`Year: ${year}`}
-          ></div> */}
-        </div>
-        <div
-          className="currentYearLabel"
-          style={{ left: `${progressPercentage}%` }}
-        >
-          <div className="arrow"></div>
-          <span>You're here in time at :</span> <span style={{color:'black', fontSize:'1rem'}}>{year}</span>
-        </div>
-        <span>{maxYear}</span>
-        </div>
-        
+     <div className="parentContainer">
+  {/* Generate stars dynamically */}
+  {Array.from({ length: 100 }).map((_, index) => (
+    <div key={index} className="star"></div>
+  ))}
+
+  <div className="timelineWrapper">
+    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.1rem', alignmentBaseline: 'central', width: '100%' }}>
+      <span style={{ fontSize: '1rem', color: 'white', fontWeight:'bolder' }}>{minYear}</span>
+      <div className="timeline"></div>
+      <div className="currentYearLabel" style={{ left: `${progressPercentage}%` }}>
+        <div className="arrow"></div>
+        <span>You're here in time at :</span>
+        <span style={{ color: 'black', fontSize: '1rem', color:'whitesmoke' }}>{year}</span>
       </div>
-      {RestOfTheApp}
+      <span style={{ fontSize: '1rem', color: 'white', fontWeight:'bolder'}}>{maxYear}</span>
+    </div>
+  </div>
+  {RestOfTheApp}
+</div>
+
     </>
   );
 }
