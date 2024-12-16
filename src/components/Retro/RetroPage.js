@@ -40,7 +40,7 @@ export default function RetroPage() {
         <span>Feel the Retro Vibes of Music 🎶 | Timeless Classics | A Journey Back in Time...</span>
       </div>
       <header className={styles.header}>
-        <h1>Retro 2000s Music Store</h1>
+        <h1>Retro (1990s - 2010s) Music Store</h1>
         <span>CurrentYear : {devCycleReducer.year}</span>
       </header>
       <div className={styles.marquee}>

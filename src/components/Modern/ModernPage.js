@@ -112,7 +112,7 @@ export default function ModernPage() {
       ) : (
         <div className={styles.container}>
           <header className={styles.header}>
-            <h1>The Modern Music Store</h1>
+            <h1>The Modern (2010 - Present) Music Store</h1>
             <span style={{ fontSize: "1.4rem", color:'yellowgreen' }}>
               Current Year : {devCycleReducer.year}
             </span>

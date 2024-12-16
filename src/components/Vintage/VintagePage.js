@@ -42,7 +42,7 @@ export default function VintagePage() {
         rel="stylesheet"
       />
       <header className={styles.header} style={{ display: 'flex' }}>
-        <h1 style={{ width: '95%' }}>Derby's Vintage Music shop</h1>
+        <h1 style={{ width: '95%' }}>Derby's Vintage (1950s - 1990s) Music shop</h1>
         <div style={{fontSize:'2rem', fontFamily:'monospace'}}>Current Year : {devCycleReducer.year}</div>
       </header>
       <main className={styles.main}>
