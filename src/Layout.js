@@ -4,11 +4,15 @@ import { useIsDevCycleInitialized, useVariableValue, withDevCycleProvider } from
 import ModernPage from './components/Modern/ModernPage';
 import RetroPage from './components/Retro/RetroPage';
 import './Layout.css'
+import ModernLoader from './components/Loaders/Modern/ModernLoader';
 function Layout() {
   const isDevCycleInitialized = useIsDevCycleInitialized();
   const dispatch = useDispatch();
 
-  const year = useVariableValue('time-machine', '1900');
+  
+
+  const year = useVariableValue('time-machine', '2018');
+
   // const year = 1980;
   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
 
@@ -27,6 +31,9 @@ function Layout() {
 
   progressPercentage = year > 2020 ? progressPercentage - 2.7 : progressPercentage;
   progressPercentage = year < 1955 ? progressPercentage + 2.7: progressPercentage;
+
+  if(!isDevCycleInitialized)
+    return <ModernLoader hidden={false}/>
 
   return (
     <>

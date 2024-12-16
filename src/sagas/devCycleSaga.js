@@ -39,8 +39,18 @@ function* devcycleDataPopulator(action) {
 
     const filteredData = yield Promise.all(musicData.map(async (music) => {
       try {
-        const imageFirstStepData = await axios.get(`http://localhost:3001/proxy?id=${music.id}`);
+        const imageFirstStepData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/proxy?id=${music.id}`);
 
+        if(!imageFirstStepData){
+          return {
+            id: '404',
+            title:'This song has no title, please refresh the page',
+            artistDetails:{
+              name:'Unknown artist'
+            },
+            imageUrl:'/noImage.png'
+          }
+        }
         const data = await imageFirstStepData.data;
         const { caa_id, caa_release_mbid } = (data.playlist.playlist.track[0].extension["https://musicbrainz.org/doc/jspf#track"].additional_metadata);
 

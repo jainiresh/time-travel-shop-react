@@ -26,6 +26,11 @@ export default function ModernPage() {
     image: product.imageUrl,
   }));
 
+  useEffect(()=>{
+
+  console.log('The devcycle values modern is ');
+  console.log(devCycleReducer.year);
+  }, [devCycleReducer.year])
   useEffect(() => {
     if (!loaderStateReducer.showLoader) {
       const timer = setTimeout(() => setIsLoading(false), 800); // Delay for fade-out
@@ -84,7 +89,7 @@ export default function ModernPage() {
       {!isLoading && (style ? (
         <div className={styles.container}>
           <header className={styles.header}>
-            <h1>The Modern Music Store</h1>
+            <h1>The Modern (2010s - Present) Music Store</h1>
             <span style={{ fontSize: "1.4rem", color:'yellowgreen' }}>
               Current Year : {devCycleReducer.year}
             </span>
@@ -112,7 +117,7 @@ export default function ModernPage() {
       ) : (
         <div className={styles.container}>
           <header className={styles.header}>
-            <h1>The Modern (2010 - Present) Music Store</h1>
+            <h1>The Modern (2010s - Present) Music Store</h1>
             <span style={{ fontSize: "1.4rem", color:'yellowgreen' }}>
               Current Year : {devCycleReducer.year}
             </span>
