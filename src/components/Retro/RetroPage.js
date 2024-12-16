@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/RetroProducts.module.css";
 import { useSelector } from "react-redux";
 import { youtubeSearchApi } from "../../api/youtubeSearchApi";
+import RetroLoader from "../Loaders/Retro/RetroLoader";
+import VintageLoader from "../Loaders/Vintage/VintageLoader";
 
 export default function RetroPage() {
   const ModernProducts = useSelector((state) => state.musicMetadataReducer);
@@ -11,23 +13,35 @@ export default function RetroPage() {
 
   const [youtubeVideoDetails, setYoutubeVideoDetails] = useState(null);
 
-  // Function to handle opening the YouTube link
   const handlePlayClick = async (product) => {
     const videoDetails = await youtubeSearchApi(product.title + " " + product.artistDetails.name);
     setYoutubeVideoDetails(videoDetails.items[0]);
   };
+  const loaderStateReducer = useSelector(state => state.loaderStateReducer)
+  const [loading, setLoading] = useState(true);
+  console.log('Retro')
+
+  useEffect(() => {
+    if(!loaderStateReducer.showLoader){
+      setTimeout(setLoading(false), 800)
+    }
+  }, [loaderStateReducer.showLoader])
+  
 
   function handleIframeClose(){
     setYoutubeVideoDetails(null)
   }
   return (
+    <>
+    <VintageLoader hidden={!loading}/>
+    {!loading &&
     <div className={styles.container}>
       <div className={styles.marquee}>
         <span>Feel the Retro Vibes of Music 🎶 | Timeless Classics | A Journey Back in Time...</span>
       </div>
       <header className={styles.header}>
-        <h1>Retro Music Store</h1>
-        <span>Time : {currentTime.toLocaleTimeString()} - {currentTime.toDateString()}</span>
+        <h1>Retro 2000s Music Store</h1>
+        <span>CurrentYear : {devCycleReducer.year}</span>
       </header>
       <div className={styles.marquee}>
         <span>Retro Era Music Lives Here! | Discover the Soundtracks of the Past 🚀</span>
@@ -70,6 +84,7 @@ export default function RetroPage() {
       <div className={styles.marquee}>
         <span>© 2024 Retro Music Store | Bringing Nostalgia to Life | Thanks for Visiting!</span>
       </div>
-    </div>
+    </div>}
+    </>
   );
 }

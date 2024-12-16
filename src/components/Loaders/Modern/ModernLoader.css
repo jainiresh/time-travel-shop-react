@@ -1,0 +1,19 @@
+.loader-container-modern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #141e30, #243b55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.loader-container-modern.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

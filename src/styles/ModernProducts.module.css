@@ -476,7 +476,6 @@ position: relative;
 display: flex;
 align-items: center;
 justify-content: center;
-overflow: hidden;
 width: 80%;
 position: relative;
 }
@@ -538,6 +537,7 @@ cursor: pointer;
 margin: 0 10px;
 z-index: 10;
 transition: transform 0.2s ease-in-out;
+scale: 3;
 }
 
 .navButton:hover {

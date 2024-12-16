@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Carousel.css'; // Make sure to copy the styles into Carousel.css
 import { youtubeSearchApi } from "../../api/youtubeSearchApi";
+import IframePlayer from './IframePlayer/IframePlayer';
 function Carousel({slides}) {
   const initialState = {
     slideIndex: 0,
@@ -19,14 +20,15 @@ function Carousel({slides}) {
       setYoutubeVideoDetails(null)
     }
 
+
   const slidesReducer = (state, event) => {
-    if (event.type === "NEXT") {
+    if (event.type === "PREV") {
       return {
         ...state,
         slideIndex: (state.slideIndex + 1) % slides.length,
       };
     }
-    if (event.type === "PREV") {
+    if (event.type === "NEXT") {
       return {
         ...state,
         slideIndex:
@@ -111,12 +113,13 @@ function Carousel({slides}) {
             <h2 className="slideTitle">{slide.title}</h2>
             <h3 className="slideSubtitle">{slide.subtitle}</h3>
             <p className="slideDescription">{slide.description}</p>
+            <div style={{display:'flex', alignItems:'center', gap:'1rem', paddingTop:'1rem', transformStyle:'unset', cursor:'pointer'}} onClick={() => handlePlayClick(slide)}>
             <button
                           className="playButton"
-                          onClick={() => handlePlayClick(slide)}
                         >
                         </button>
-                      
+                        <span style={{fontSize:'2rem', fontWeight:'bolder'}}>Listen Now</span>
+                        </div>
           </div>
         </div>
       </div>)
@@ -134,16 +137,7 @@ function Carousel({slides}) {
 
       <button onClick={() => dispatch({ type: "NEXT" })}>›</button>
       {youtubeVideoDetails && (
-              <div className="youtubePlayer">
-                <div className="playerTitle"><span >Now playing :</span> <span style={{cursor:'pointer'}} onClick={() => handleIframeClose()}>close</span></div>
-                <iframe
-                  className="youtubeIframe"
-                  src={`https://www.youtube.com/embed/${youtubeVideoDetails.id.videoId}?autoplay=1`}
-                  frameBorder="0"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                ></iframe>
-              </div>
+                        <IframePlayer handleIframeClose={() => handleIframeClose()} youtubeVideoDetails={youtubeVideoDetails} />
             )}
     </div>
   );

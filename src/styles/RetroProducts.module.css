@@ -33,7 +33,7 @@
 }
 
 .productCard:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
   box-shadow: 0 0 20px #f1c40f, 0 0 10px #e74c3c inset;
   border-color: #e74c3c;
 }

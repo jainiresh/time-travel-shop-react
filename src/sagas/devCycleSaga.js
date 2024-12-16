@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest, takeLeading } from 'redux-saga/effects'
 
 function* getMusicByYearApiCall(year) {
   const randomNumber = 20;
@@ -22,6 +22,8 @@ function* devcycleDataPopulator(action) {
     console.log('Incoming payload ');
     const year = action.payload;
     console.log(year);
+
+    yield put({type:'TURN_ON_LOADING'});
     yield put({ type: 'SET_DEVCYCLE_DATA', payload: year });
     let musicData = yield call(getMusicByYearApiCall, year)
 
@@ -51,6 +53,7 @@ function* devcycleDataPopulator(action) {
     console.log('Fetched music data ', musicData)
     console.log('Filtered dataa :', filteredData)
     yield put({ type: 'POPULATE_MUSIC_METADATA', payload: filteredData })
+    yield put({type:'TURN_OFF_LOADING'});
 
 
   } catch (error) {
@@ -60,5 +63,5 @@ function* devcycleDataPopulator(action) {
 
 
 export default function* devCycleSaga() {
-  yield takeLatest('POPULATE_DEVCYCLE_DATA_SAGA', devcycleDataPopulator);
+  yield takeLeading('POPULATE_DEVCYCLE_DATA_SAGA', devcycleDataPopulator);
 }

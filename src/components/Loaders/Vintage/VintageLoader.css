@@ -1,0 +1,48 @@
+.very-old-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    color: #3a3a3a;
+  }
+  
+  .cog {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #6c757d;
+    border-radius: 50%;
+    border-top: 10px solid #343a40;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  p {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+
+  .loader-container-vintage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+  }
+  
+  .loader-container-vintage.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
