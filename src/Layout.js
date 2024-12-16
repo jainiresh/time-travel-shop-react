@@ -9,13 +9,13 @@ function Layout() {
   const dispatch = useDispatch();
 
   // const year = useVariableValue('time-machine', '1900');
-  const year = 2000;
+  const year = 1980;
   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
 
   console.log('The devcycle values is ');
   console.log(year);
 
-  let isVintage = year <= 1980;
+  let isVintage = year <= 1990;
   let isRetro = year <= 2010 && !isVintage;
 
   const RestOfTheApp = isVintage ? <VintagePage /> : isRetro ? <RetroPage /> : <ModernPage />;
