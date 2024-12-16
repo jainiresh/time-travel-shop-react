@@ -8,8 +8,7 @@ function* getMusicByYearApiCall(year) {
   // Generate a random offset in the range [5, 10]
   const offset = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
 
-  console.log('random Number (limit):', randomNumber);
-  console.log('random Offset:', offset);
+
 
   const response = yield call(
     fetch,
@@ -22,16 +21,14 @@ function* getMusicByYearApiCall(year) {
   );
 
   const data = yield response.json();
-  console.log('API response:', data);
   return data.recordings;
 }
 
 
 function* devcycleDataPopulator(action) {
   try {
-    console.log('Incoming payload ');
+
     const year = action.payload;
-    console.log(year);
 
     yield put({type:'TURN_ON_LOADING'});
     yield put({ type: 'SET_DEVCYCLE_DATA', payload: year });
@@ -70,8 +67,6 @@ function* devcycleDataPopulator(action) {
     }));
 
 
-    console.log('Fetched music data ', musicData)
-    console.log('Filtered dataa :', filteredData)
     yield put({ type: 'POPULATE_MUSIC_METADATA', payload: filteredData })
     yield put({type:'TURN_OFF_LOADING'});
 

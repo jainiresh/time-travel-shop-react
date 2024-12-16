@@ -10,7 +10,6 @@ function Carousel({slides}) {
   
     // Function to handle opening the YouTube link
     const handlePlayClick = async (product) => {
-      console.log(product);
       
       const videoDetails = await youtubeSearchApi(product.title + " " + product.subtitle);
       setYoutubeVideoDetails(videoDetails.items[0]);
@@ -85,7 +84,6 @@ function Carousel({slides}) {
     const active = offset === 0 ? true : null;
     const ref = useTilt(active);
 
-    console.log('Offset is ', offset)
 
     return (
       (<div

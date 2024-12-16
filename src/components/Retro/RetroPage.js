@@ -20,7 +20,6 @@ export default function RetroPage() {
   };
   const loaderStateReducer = useSelector(state => state.loaderStateReducer)
   const [loading, setLoading] = useState(true);
-  console.log('Retro')
 
   useEffect(() => {
     if(!loaderStateReducer.showLoader){

@@ -29,9 +29,6 @@ export default function ModernPage() {
   }));
 
   useEffect(()=>{
-
-  console.log('The devcycle values modern is ');
-  console.log(devCycleReducer.year);
   }, [devCycleReducer.year])
   useEffect(() => {
     if (!loaderStateReducer.showLoader) {
@@ -82,7 +79,6 @@ export default function ModernPage() {
 
   const changeStyle = () => {
     setStyle(style ? 0 : 1);
-    console.log(style);
   };
 
   const refresh = () => {

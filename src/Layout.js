@@ -16,9 +16,6 @@ function Layout() {
   // const year = 1980;
   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
 
-  console.log('The devcycle values is ');
-  console.log(year);
-
   let isVintage = year <= 1990;
   let isRetro = year <= 2010 && !isVintage;
 
