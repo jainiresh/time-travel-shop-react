@@ -6,6 +6,8 @@ import { youtubeSearchApi } from "../../api/youtubeSearchApi";
 import ChangeCircle from "@mui/icons-material/ChangeCircle";
 import IframePlayer from "./IframePlayer/IframePlayer";
 import ModernLoader from "../Loaders/Modern/ModernLoader";
+import RefreshIcon from "@mui/icons-material/Refresh";
+
 
 export default function ModernPage() {
   const ModernProducts = useSelector((state) => state.musicMetadataReducer);
@@ -78,11 +80,21 @@ export default function ModernPage() {
     console.log(style);
   };
 
+  const refresh = () => {
+    window.location.reload();
+  };
+
   return (
     <>
       <ModernLoader hidden={!isLoading} />
       {!isLoading && (style ? (
         <div className={styles.container}>
+          <div className={styles.refresh}>
+              <div onClick={refresh} className={styles.refreshButton}>
+                <RefreshIcon />
+              </div>
+              <span>Fetch new set of songs</span>
+            </div>
           <header className={styles.header}>
             <h1>The Modern Music Store</h1>
             <span style={{ fontSize: "1.4rem", color:'yellowgreen' }}>
@@ -111,6 +123,12 @@ export default function ModernPage() {
         </div>
       ) : (
         <div className={styles.container}>
+          <div className={styles.refresh}>
+              <div onClick={refresh} className={styles.refreshButton}>
+                <RefreshIcon />
+              </div>
+              <span>Fetch new set of songs</span>
+            </div>  
           <header className={styles.header}>
             <h1>The Modern Music Store</h1>
             <span style={{ fontSize: "1.4rem", color:'yellowgreen' }}>

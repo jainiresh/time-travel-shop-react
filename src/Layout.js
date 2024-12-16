@@ -9,7 +9,7 @@ function Layout() {
   const dispatch = useDispatch();
 
   // const year = useVariableValue('time-machine', '1900');
-  const year = 1975;
+  const year = 2000;
   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
 
   console.log('The devcycle values is ');
