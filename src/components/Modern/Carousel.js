@@ -106,7 +106,7 @@ function Carousel({slides}) {
         <div
           className="slideContent"
           style={{
-            backgroundImage: `url('${slide.image}')`,
+            backgroundImage: `url('${slide.image ?? './noImage.png'}')`,
           }}
         >
           <div className="slideContentInner">
