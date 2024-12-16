@@ -134,3 +134,70 @@
     transform: translateX(-100%);
   }
 }
+
+
+.playButton {
+  background-color: #e1bf83;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  border: 3px solid #030303;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-in-out, background-color 0.3s ease-in-out;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+
+
+
+/* YouTube Player Styles */
+.youtubePlayer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 420px; /* Set a fixed width for the retro look */
+}
+
+.youtubePlayer .playerTitle {
+  color: #f1c40f;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.youtubeIframe {
+  width: 100%;
+  height: 240px;
+  border: 3px solid #f39c12;
+  box-shadow: 0 0 15px #f39c12 inset, 0 0 15px #e74c3c;
+  border-radius: 5px;
+  filter: grayscale(50%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.youtubeIframe:hover {
+  filter: grayscale(0%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .youtubePlayer {
+    width: 320px;
+  }
+
+  .youtubeIframe {
+    height: 180px;
+  }
+}

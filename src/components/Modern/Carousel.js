@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Carousel.css'; // Make sure to copy the styles into Carousel.css
-
+import { youtubeSearchApi } from "../../api/youtubeSearchApi";
 function Carousel({slides}) {
   const initialState = {
     slideIndex: 0,
   };
+   const [youtubeVideoDetails, setYoutubeVideoDetails] = useState(null);
+  
+    // Function to handle opening the YouTube link
+    const handlePlayClick = async (product) => {
+      console.log(product);
+      
+      const videoDetails = await youtubeSearchApi(product.title + " " + product.subtitle);
+      setYoutubeVideoDetails(videoDetails.items[0]);
+    };
+  
+    function handleIframeClose(){
+      setYoutubeVideoDetails(null)
+    }
 
   const slidesReducer = (state, event) => {
     if (event.type === "NEXT") {
@@ -98,6 +111,12 @@ function Carousel({slides}) {
             <h2 className="slideTitle">{slide.title}</h2>
             <h3 className="slideSubtitle">{slide.subtitle}</h3>
             <p className="slideDescription">{slide.description}</p>
+            <button
+                          className="playButton"
+                          onClick={() => handlePlayClick(slide)}
+                        >
+                        </button>
+                      
           </div>
         </div>
       </div>)
@@ -114,6 +133,18 @@ function Carousel({slides}) {
       })}
 
       <button onClick={() => dispatch({ type: "NEXT" })}>›</button>
+      {youtubeVideoDetails && (
+              <div className="youtubePlayer">
+                <div className="playerTitle"><span >Now playing :</span> <span style={{cursor:'pointer'}} onClick={() => handleIframeClose()}>close</span></div>
+                <iframe
+                  className="youtubeIframe"
+                  src={`https://www.youtube.com/embed/${youtubeVideoDetails.id.videoId}?autoplay=1`}
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            )}
     </div>
   );
 }
