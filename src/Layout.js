@@ -21,8 +21,8 @@ setupOpenFeature();
 function Layout() {
   const dispatch = useDispatch();
 
-  const year = useStringFlagValue('time-machine', '2018');
-  if (!year) {
+  const year = useStringFlagValue('time-machine', '2025');
+  if (year == '2025') {
     return <ModernLoader hidden={false} />;
   }
 
