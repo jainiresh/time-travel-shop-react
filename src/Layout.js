@@ -1,24 +1,31 @@
-import VintagePage from './components/Vintage/VintagePage';
+import { OpenFeatureProvider, useBooleanFlagValue, OpenFeature, useStringFlagValue } from '@openfeature/react-sdk';
+import DevCycleProvider from '@devcycle/openfeature-web-provider';
 import { useDispatch } from 'react-redux';
-import { useIsDevCycleInitialized, useVariableValue, withDevCycleProvider } from '@devcycle/react-client-sdk';
+import VintagePage from './components/Vintage/VintagePage';
 import ModernPage from './components/Modern/ModernPage';
 import RetroPage from './components/Retro/RetroPage';
 import './Layout.css';
 import ModernLoader from './components/Loaders/Modern/ModernLoader';
 
+const user = { user_id: 'user_id' }; 
+
+const devcycleProvider = new DevCycleProvider('dvc_client_95e52678_6b07_4b43_b1a0_01c8a33fb55b_7558482', {});
+
+async function setupOpenFeature() {
+  await OpenFeature.setContext(user);
+  await OpenFeature.setProviderAndWait(devcycleProvider);
+}
+
+setupOpenFeature();
+
 function Layout() {
-  const isDevCycleInitialized = useIsDevCycleInitialized();
   const dispatch = useDispatch();
 
-  // Call useVariableValue unconditionally
-  const year = useVariableValue('time-machine', '2018');
-
-  if (!isDevCycleInitialized) {
-    // Render loader until DevCycle is fully initialized
+  const year = useStringFlagValue('time-machine', '2018');
+  if (!year) {
     return <ModernLoader hidden={false} />;
   }
 
-  // Dispatch after initialization
   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
 
   let isVintage = year <= 1990;
@@ -26,7 +33,6 @@ function Layout() {
 
   const RestOfTheApp = isVintage ? <VintagePage /> : isRetro ? <RetroPage /> : <ModernPage />;
 
-  // Calculate the position of the year on the timeline (percentage)
   const minYear = 1950;
   const maxYear = 2024;
   let progressPercentage = ((year - minYear) / (maxYear - minYear)) * 100;
@@ -35,9 +41,7 @@ function Layout() {
   progressPercentage = year < 1955 ? progressPercentage + 2.7 : progressPercentage;
 
   return (
-    <>
       <div className="parentContainer">
-        {/* Generate stars dynamically */}
         {Array.from({ length: 100 }).map((_, index) => (
           <div key={index} className="star"></div>
         ))}
@@ -65,10 +69,7 @@ function Layout() {
         </div>
         {RestOfTheApp}
       </div>
-    </>
   );
 }
 
-export default withDevCycleProvider({
-  sdkKey: 'dvc_client_95e52678_6b07_4b43_b1a0_01c8a33fb55b_7558482',
-})(Layout);
+export default Layout;
