@@ -93,7 +93,7 @@ export default function ModernPage() {
       {!isLoading && (style ? (
         <div style={{background:'linear-gradient(to bottom, #141e30, #243b55)'}}>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Pixelify+Sans:wght@400..700&family=Playwrite+IT+Moderna:wght@100..400&display=swap" rel="stylesheet" />
         <div className={styles.container}>
         <header
@@ -175,7 +175,7 @@ export default function ModernPage() {
       ) : (
         <div className={styles.container}>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Pixelify+Sans:wght@400..700&family=Playwrite+IT+Moderna:wght@100..400&display=swap" rel="stylesheet" />
           <div onClick={refresh} className={styles.refresh}>
               <div  className={styles.refreshButton}>

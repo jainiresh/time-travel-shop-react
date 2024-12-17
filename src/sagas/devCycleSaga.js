@@ -24,7 +24,6 @@ function* getMusicByYearApiCall(year) {
   return data.recordings;
 }
 
-
 function* devcycleDataPopulator(action) {
   try {
 
@@ -34,9 +33,24 @@ function* devcycleDataPopulator(action) {
     yield put({ type: 'SET_DEVCYCLE_DATA', payload: year });
     let musicData = yield call(getMusicByYearApiCall, year)
 
+    const payloadIds = [];
+    musicData.map(music => payloadIds.push(music.id));
+    
+    let imageData = yield call(fetch , `${process.env.REACT_APP_SERVER_URL}/proxy`,{
+      method:'POST',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(payloadIds)
+    }) ;
+
+    imageData = yield imageData.json();
+    
     const filteredData = yield Promise.all(musicData.map(async (music) => {
       try {
-        const imageFirstStepData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/proxy?id=${music.id}`);
+        
+        const imageFirstStepData = imageData[music.id];
 
         if(!imageFirstStepData){
           return {
@@ -48,9 +62,7 @@ function* devcycleDataPopulator(action) {
             imageUrl:'/noImage.png'
           }
         }
-        const data = await imageFirstStepData.data;
-        const { caa_id, caa_release_mbid } = (data.playlist.playlist.track[0].extension["https://musicbrainz.org/doc/jspf#track"].additional_metadata);
-
+        const {caa_id, caa_release_mbid} = imageFirstStepData;
         const imageUrl = caa_id && caa_release_mbid ? `https://ia601404.us.archive.org/19/items/mbid-${caa_release_mbid}/mbid-${caa_release_mbid}-${caa_id}_thumb250.jpg` : undefined;
         
         return {
