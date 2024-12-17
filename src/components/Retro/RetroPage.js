@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/RetroProducts.module.css";
 import { useSelector } from "react-redux";
 import { youtubeSearchApi } from "../../api/youtubeSearchApi";
-import RetroLoader from "../Loaders/Retro/RetroLoader";
 import VintageLoader from "../Loaders/Vintage/VintageLoader";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
@@ -15,7 +14,7 @@ export default function RetroPage() {
   const [youtubeVideoDetails, setYoutubeVideoDetails] = useState(null);
 
   const handlePlayClick = async (product) => {
-    const videoDetails = await youtubeSearchApi(product.title + " " + product.artistDetails.name);
+    const videoDetails = await youtubeSearchApi(product.title + " " + product.artistDetails.name+ " song");
     setYoutubeVideoDetails(videoDetails.items[0]);
   };
   const loaderStateReducer = useSelector(state => state.loaderStateReducer)
@@ -40,16 +39,18 @@ export default function RetroPage() {
     <VintageLoader hidden={!loading}/>
     {!loading &&
     <div className={styles.container}>
+      
+      <div className={styles.marquee}>
+        <span>Feel the Retro Vibes of Music 🎶 | Timeless Classics | A Journey Back in Time...</span>
+      </div>
+      
+      <header className={styles.header}>
       <div className={styles.refresh}>
               <div onClick={refresh} className={styles.refreshButton}>
                 <RefreshIcon />
               </div>
               <span>Fetch new set of songs</span>
             </div>
-      <div className={styles.marquee}>
-        <span>Feel the Retro Vibes of Music 🎶 | Timeless Classics | A Journey Back in Time...</span>
-      </div>
-      <header className={styles.header}>
         <h1>Retro (1990s - 2010s) Music Store</h1>
         <span>CurrentYear : {devCycleReducer.year}</span>
       </header>
@@ -60,7 +61,7 @@ export default function RetroPage() {
         {ModernProducts.map((product) => (
           <div key={product.id} className={styles.productCard}>
             <img
-              src={product.imageUrl ?? "/noImage.png"}
+              src={product.imageUrl ?? "/songOld.jpeg"}
               className={styles.imageTint}
               alt={product.title}
             />

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import styles from './Carousel.css'; // Make sure to copy the styles into Carousel.css
 import { youtubeSearchApi } from "../../api/youtubeSearchApi";
 import IframePlayer from './IframePlayer/IframePlayer';
-function Carousel({slides}) {
+function Carousel({slides, year}) {
+  console.log('Initial ', slides)
   const initialState = {
     slideIndex: 0,
   };
@@ -10,8 +11,8 @@ function Carousel({slides}) {
   
     // Function to handle opening the YouTube link
     const handlePlayClick = async (product) => {
-      
-      const videoDetails = await youtubeSearchApi(product.title + " " + product.subtitle);
+      console.log(product)
+      const videoDetails = await youtubeSearchApi(product.title + " " + product.subtitle+ " song year " + year);
       setYoutubeVideoDetails(videoDetails.items[0]);
     };
   

@@ -52,7 +52,7 @@ function* devcycleDataPopulator(action) {
         const { caa_id, caa_release_mbid } = (data.playlist.playlist.track[0].extension["https://musicbrainz.org/doc/jspf#track"].additional_metadata);
 
         const imageUrl = caa_id && caa_release_mbid ? `https://ia601404.us.archive.org/19/items/mbid-${caa_release_mbid}/mbid-${caa_release_mbid}-${caa_id}_thumb250.jpg` : undefined;
-
+        
         return {
           id: music.id,
           title: music.title,

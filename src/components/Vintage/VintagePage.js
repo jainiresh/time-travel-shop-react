@@ -24,9 +24,7 @@ export default function VintagePage() {
 
   // Function to handle opening the YouTube link
   const handlePlayClick = async (product) => {
-    const videoDetails = await youtubeSearchApi(
-      product.title + " " + product.artistDetails.name
-    );
+    let videoDetails = await youtubeSearchApi(product.title + " " + product.artistDetails.name+ " song");
     setYoutubeVideoDetails(videoDetails.items[0]);
   };
 
