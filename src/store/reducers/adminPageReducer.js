@@ -1,5 +1,5 @@
 const initialState = {
-    isAdminPage : false
+    isAdminPage : true
 }
 
 const adminPageReducer = (state=initialState, action) => {

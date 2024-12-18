@@ -102,7 +102,7 @@ const Admin = () => {
         className={`background-overlay ${isFadingOut ? "fade-out" : ""}`}
         style={{
           backgroundImage: theme.backgroundImage,
-          opacity: 1,
+          opacity: timeValue == 1 ? 1 : 0.8,
           backgroundSize: "cover",
           backgroundPosition: "center",
           position: "absolute",

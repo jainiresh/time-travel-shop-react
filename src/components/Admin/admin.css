@@ -77,6 +77,28 @@ h3 {
   z-index: 0;
 }
 
+/* Media query for screens smaller than 1200px (e.g., tablets or smaller desktops) */
+@media (max-width: 1200px) {
+  .year-display {
+    font-size: 24rem; /* Slightly smaller font size for medium screens */
+  }
+}
+
+/* Media query for screens smaller than 768px (e.g., mobile phones) */
+@media (max-width: 768px) {
+  .year-display {
+    font-size: 18rem; /* Smaller font size for mobile devices */
+  }
+}
+
+/* Media query for very small screens (e.g., very small phones) */
+@media (max-width: 480px) {
+  .year-display {
+    font-size: 12rem; /* Further reduce the font size on very small screens */
+  }
+}
+
+
 p {
   font-size: 1.2rem;
   z-index: 1;

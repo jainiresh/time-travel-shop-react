@@ -1,5 +1,3 @@
-import { OpenFeatureProvider, useBooleanFlagValue, OpenFeature, useStringFlagValue } from '@openfeature/react-sdk';
-import DevCycleProvider from '@devcycle/openfeature-web-provider';
 import { useDispatch, useSelector } from 'react-redux';
 import VintagePage from './components/Vintage/VintagePage';
 import ModernPage from './components/Modern/ModernPage';
@@ -10,16 +8,6 @@ import { useEffect, useRef, useState } from 'react';
 import Admin from './components/Admin/admin';
 import { useIsDevCycleInitialized, useVariable, useVariableValue } from '@devcycle/react-client-sdk';
 
-// const user = { user_id: 'user_id' }; 
-
-// const devcycleProvider = new DevCycleProvider('dvc_client_95e52678_6b07_4b43_b1a0_01c8a33fb55b_7558482', {});
-
-// async function setupOpenFeature() {
-//   await OpenFeature.setContext(user);
-//   await OpenFeature.setProviderAndWait(devcycleProvider);
-// }
-
-// setupOpenFeature();
 
 function Layout() {
   const dispatch = useDispatch();
@@ -29,17 +17,17 @@ function Layout() {
   const year = useVariableValue('time-machine', '2025');
   
   console.log('Current year ', year )
-  useEffect(() => {
-    if(isDevCycleInitialized)
-    dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
-  }, [year, dispatch])
+  // useEffect(() => {
+  //   if(isDevCycleInitialized)
+  //   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
+  // }, [year, dispatch])
 
   if (!isDevCycleInitialized) {
     return <ModernLoader hidden={false} />;
   }
   
     
-
+  dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
  
 
 
