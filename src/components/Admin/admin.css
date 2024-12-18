@@ -1,0 +1,256 @@
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-overlay {
+  pointer-events: none;
+  transition: background-image 1s ease-in-out; /* Smooth transition for background image */
+}
+
+h3 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.slider-container {
+  position: relative;
+  width: 80%;
+  margin: 20px 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.styled-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 17px;
+  background: linear-gradient(90deg, #ff6b6b, #4d9de0);
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.styled-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 2px solid #4d9de0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.slider-tooltip {
+  position: absolute;
+  top: -30px;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.year-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36rem; /* Large font size */
+  font-stretch: narrower;
+  font-weight: bold;
+  z-index: 0;
+}
+
+p {
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Mukta:700');
+ /* * {
+	 box-sizing: border-box;
+}
+ *::before, *::after {
+	 box-sizing: border-box;
+} */
+ /* body {
+	 font-family: 'Mukta', sans-serif;
+	 font-size: 1rem;
+	 line-height: 1.5;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 margin: 0;
+	 min-height: 100vh;
+	 background: #f3f8fa;
+} */
+ button {
+	 position: relative;
+	 display: inline-block;
+	 cursor: pointer;
+	 outline: none;
+	 border: 0;
+	 vertical-align: middle;
+	 text-decoration: none;
+	 background: transparent;
+	 padding: 0;
+	 font-size: inherit;
+	 font-family: inherit;
+}
+ button.learn-more {
+	 width: 12rem;
+	 height: auto;
+}
+ button.learn-more .circle {
+	 transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	 position: relative;
+	 display: block;
+	 margin: 0;
+	 width: 3rem;
+	 height: 3rem;
+	 background: #282936;
+	 border-radius: 1.625rem;
+}
+ button.learn-more .circle .icon {
+	 transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	 position: absolute;
+	 top: 0;
+	 bottom: 0;
+	 margin: auto;
+	 background: #fff;
+}
+ button.learn-more .circle .icon.arrow {
+	 transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	 left: 0.625rem;
+	 width: 1.125rem;
+	 height: 0.125rem;
+	 background: none;
+}
+ button.learn-more .circle .icon.arrow::before {
+	 position: absolute;
+	 content: '';
+	 top: -0.25rem;
+	 right: 0.0625rem;
+	 width: 0.625rem;
+	 height: 0.625rem;
+	 border-top: 0.125rem solid #fff;
+	 border-right: 0.125rem solid #fff;
+	 transform: rotate(45deg);
+}
+ button.learn-more .button-text {
+	 transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 padding: 0.75rem 0;
+	 margin: 0 0 0 1.85rem;
+	 color: whitesmoke;
+	 font-weight: 700;
+	 line-height: 1.6;
+	 text-align: center;
+	 text-transform: uppercase;
+}
+ button:hover .circle {
+	 width: 100%;
+}
+ button:hover .circle .icon.arrow {
+	 background: #fff;
+	 transform: translate(1rem, 0);
+}
+ button:hover .button-text {
+	 color: #fff;
+}
+ @supports (display: grid) {
+	 /* body {
+		 display: grid;
+		 grid-template-columns: repeat(4, 1fr);
+		 grid-gap: 0.625rem;
+		 grid-template-areas: ". main main ." ". main main .";
+	} */
+	 #container {
+		 grid-area: main;
+		 align-self: center;
+		 justify-self: center;
+	}
+}
+ 
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fade-out effect for current screen */
+.background-overlay.fade-out {
+  opacity: 0;
+}
+
+/* Video overlay and text */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay behind the video */
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-text {
+  position: absolute;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  animation: fadeIn 1s ease-out forwards; /* Smooth fade-in effect */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

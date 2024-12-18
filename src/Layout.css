@@ -1,7 +1,7 @@
 .timelineWrapper {
     position: relative;
     width: 80%;
-    margin: 0 auto 30px; /* Space between timeline and content */
+    margin: 0 auto 10px; /* Space between timeline and content */
     text-align: center;
   }
   
@@ -274,4 +274,21 @@
     left: 95%;
     animation-delay: 14.5s;
   }
+  
+  .time-travel-container {
+    display: inline-block;
+    height: 0.5rem;
+  }
+  
+  .time-travel-text {
+    color: white;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: transform 0.2s ease, font-size 0.2s ease;
+  }
+  
+  .time-travel-container:hover .time-travel-text {
+    transform: scale(1.5); /* Scale effect */
+  }
+  
   
