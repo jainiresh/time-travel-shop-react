@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./admin.css"; // Import the CSS file
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,25 @@ const Admin = () => {
 
   const dispatch = useDispatch();
   console.log('In admin ', adminPageReducer.isAdminPage)
+
+  // Preload images for background themes
+  useEffect(() => {
+    preloadImages();
+  }, []);
+
+  // Preload function to ensure background images are loaded
+  const preloadImages = () => {
+    const images = [
+      "/oldenMusic.jpg", 
+      "/retroMusic.jpg", 
+      "/b1.jpg"
+    ];
+    images.forEach(image => {
+      const img = new Image();
+      img.src = image;
+    });
+  };
+
   // Handle slider change
   const handleSliderChange = (event) => {
     setYear(event.target.value);
