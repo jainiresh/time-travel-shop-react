@@ -16,7 +16,6 @@ function Layout() {
 
   const year = useVariableValue('time-machine', '2025');
   
-  console.log('Current year ', year )
   // useEffect(() => {
   //   if(isDevCycleInitialized)
   //   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
