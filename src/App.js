@@ -7,17 +7,13 @@ import OldLoader from './components/Loaders/Retro/RetroLoader';
 import VintageLoader from './components/Loaders/Vintage/VintageLoader';
 import RetroLoader from './components/Loaders/Retro/RetroLoader';
 import { OpenFeatureProvider } from '@openfeature/react-sdk';
+import Admin from './components/Admin/admin';
 
 function App() {
   return (
    <>
    <Provider store={store}>
-    <OpenFeatureProvider>
-    <Layout />
-    {/* <ModernLoader /> */}
-    {/* <RetroLoader hidden={false} /> */}
-    {/* <VintageLoader /> */}
-    </OpenFeatureProvider>
+    <Admin></Admin>
     </Provider>
    </>
   );
