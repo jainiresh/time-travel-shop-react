@@ -30,7 +30,7 @@ function Layout() {
  
 
 
-  let isVintage = year <= 1990;
+  let isVintage = year <= 1980;
   let isRetro = year <= 2010 && !isVintage;
 
   const RestOfTheApp = isVintage ? <VintagePage /> : isRetro ? <RetroPage /> : <ModernPage />;
