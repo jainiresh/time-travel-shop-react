@@ -1,27 +1,29 @@
 import { useDispatch, useSelector } from 'react-redux';
 import VintagePage from './components/Vintage/VintagePage';
+import { OpenFeature, useStringFlagValue } from '@openfeature/react-sdk';
+import DevCycleProvider from '@devcycle/openfeature-web-provider';
 import ModernPage from './components/Modern/ModernPage';
 import RetroPage from './components/Retro/RetroPage';
 import './Layout.css';
 import ModernLoader from './components/Loaders/Modern/ModernLoader';
-import { useEffect } from 'react';
 import Admin from './components/Admin/admin';
-import { useIsDevCycleInitialized, useVariableValue } from '@devcycle/react-client-sdk';
 
+const user = { user_id: 'user_id' }; 
+const devcycleProvider = new DevCycleProvider(process.env.REACT_APP_DEVCYCLE_SDK_CLIENT_KEY, {});
+async function setupOpenFeature() {
+  await OpenFeature.setContext(user);
+  await OpenFeature.setProviderAndWait(devcycleProvider);
+}
+setupOpenFeature();
 
 function Layout() {
   const dispatch = useDispatch();
   const adminPageReducer = useSelector(state => state.adminPageReducer)
-  const isDevCycleInitialized = useIsDevCycleInitialized();
 
-  const year = useVariableValue('time-machine', '2025');
-  // clg
-  // useEffect(() => {
-  //   if(isDevCycleInitialized)
-  //   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
-  // }, [year, dispatch])
+  const year = useStringFlagValue('time-machine', '2025');
+  console.log('Current year ', year)
 
-  if (!isDevCycleInitialized) {
+  if (year == 2025) {
     return <ModernLoader hidden={false} />;
   }
   
