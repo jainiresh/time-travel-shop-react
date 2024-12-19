@@ -124,7 +124,7 @@ export default function ModernPage() {
     onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
   >
     THE MODERN MUSIC STORE 
-    <span style={{fontSize:'1.4rem', paddingLeft: '1rem'}}> (2010's - Present)</span>
+    <span style={{fontSize:'1.4rem', paddingLeft: '1rem'}}> (2011's - Present)</span>
   </h1>
 
   <span
@@ -211,7 +211,7 @@ export default function ModernPage() {
     onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
   >
     THE MODERN MUSIC STORE 
-    <span style={{fontSize:'1.4rem', paddingLeft: '1rem'}}> (2010's - Present)</span>
+    <span style={{fontSize:'1.4rem', paddingLeft: '1rem'}}> (2011's - Present)</span>
   </h1>
 
   <span
@@ -252,7 +252,7 @@ export default function ModernPage() {
                     <h2>{product.title}</h2>
                     <p>{product.artistDetails["name"]}</p>
                     <div
-                      style={{ display: "flex", justifyContent: "center", gap: "1rem" }}
+                      style={{ display: "flex", justifyContent: "center", alignItems:'center', gap: "1rem" }}
                     >
                       <button
                         className={styles.playButton}

@@ -50,7 +50,7 @@ export default function VintagePage() {
               </div>
               <span>Fetch new set of songs</span>
             </div>
-            <h1 style={{ width: "95%" }}>Derby's Vintage (1950s - 1990s) Music shop</h1>
+            <h1 style={{ width: "95%" }}>Derby's Vintage (1950s - 1980s) Music shop</h1>
             <div style={{ fontSize: "2rem", fontFamily: "monospace" }}>
               Current Year : {devCycleReducer.year}
             </div>
