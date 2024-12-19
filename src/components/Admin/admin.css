@@ -71,7 +71,7 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 36rem; /* Large font size */
+  font-size: 26rem; /* Large font size */
   font-stretch: narrower;
   font-weight: bold;
   z-index: 0;

@@ -4,9 +4,9 @@ import ModernPage from './components/Modern/ModernPage';
 import RetroPage from './components/Retro/RetroPage';
 import './Layout.css';
 import ModernLoader from './components/Loaders/Modern/ModernLoader';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import Admin from './components/Admin/admin';
-import { useIsDevCycleInitialized, useVariable, useVariableValue } from '@devcycle/react-client-sdk';
+import { useIsDevCycleInitialized, useVariableValue } from '@devcycle/react-client-sdk';
 
 
 function Layout() {
@@ -15,7 +15,7 @@ function Layout() {
   const isDevCycleInitialized = useIsDevCycleInitialized();
 
   const year = useVariableValue('time-machine', '2025');
-  
+  // clg
   // useEffect(() => {
   //   if(isDevCycleInitialized)
   //   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
@@ -25,7 +25,7 @@ function Layout() {
     return <ModernLoader hidden={false} />;
   }
   
-    
+  if(!adminPageReducer.isAdminPage)  
   dispatch({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
  
 

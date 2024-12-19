@@ -15,6 +15,9 @@ function* timeTravelFromAdminPageSaga(action){
     
     yield call(updateFeatureFlagDevCycleApi, action.payload);
     yield delay(3000);
+    const year = action.payload;
+  
+    yield put ({ type: 'POPULATE_DEVCYCLE_DATA_SAGA', payload: year });
     yield put({type:'TRAVEL_OUT_FROM_ADMIN_PAGE'});
 }
 

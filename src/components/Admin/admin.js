@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./admin.css"; // Import the CSS file
-import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../Layout";
 
@@ -53,6 +52,7 @@ const Admin = () => {
         backgroundImage: "url('/retroMusic.jpg')",
         fontFamily: "'Courier New', monospace",
         color: "yellow",
+        fontWeight: 'bolder'
       };
     } else if (year >= 2011 && year <= 2024) {
       timeValue = 1;
@@ -119,7 +119,7 @@ const Admin = () => {
         {year}
       </div>
 
-      <h3 style={{ top: 0, left: 0, width: "100%", fontSize: "5rem" }}>Travel across time and discover the music of :</h3>
+      <h3 style={{ top: 0, left: 0, width: "100%", fontSize: "4rem" }}>Travel through time and Explore the music of :</h3>
 
       {/* Styled Slider */}
       <div className="slider-container">
