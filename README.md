@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+*This is a submission for the [DevCycle Feature Flag Challenge](https://dev.to/challenges/devcycle): Feature Flag Funhouse*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What I Built
+Welcome to our Time-Traveling Music Store, where every visit takes you on a nostalgic journey through the decades. Leveraging a dynamic feature flag, the store adapts to showcase music from any chosen year, immersing you in an authentic experience of that era.
 
-## Available Scripts
+For example, select 1999 to explore the hits of the late '90s, accompanied by a website design reminiscent of that era’s retro aesthetics. If you choose 1945, the store transforms into a vintage interface, echoing the charm and style of mid-century design, while displaying iconic music from the time.
 
-In the project directory, you can run:
+For modern-day enthusiasts, the experience updates with sleek and cutting-edge designs for 2023, 2024, and beyond, offering the latest tracks and an ultra-modern interface.
 
-### `npm start`
+You can refresh the page or click a dedicated button to fetch new music from the year you’ve selected, keeping your musical exploration as dynamic as time itself.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Demo
+https://time-travel-shop-react.onrender.com
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+When you travel back to 1990, here is how the website would look, a real 1990 feel , and the retro styles would make you feel nostalgic.
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gw6f4081ba33tb1d0qi2.png)
 
-### `npm test`
+A space themed timeline that conveys your current position in time, and has the TIME TRAVEL button on it. (Click it)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wrnrz2aa6cp5ho5gaxrx.png)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The slider that allows you to choose, the year that you wanna time travel to , therefore choosing 1956 as your destination year , and click on "Travel here":
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5vrkvkj39xkcmhffds6l.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Hold tight, your into quantum space ....
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3axpkmjwkvxw4e5jdctd.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The olden 1956's website, with music from the same year :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3vdlx59nr37jm8273lih.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Feeling enough of olden music, travel back to the modern era to listen to modern music !
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3lwch89kl1i8z46mqf86.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The Modern era website : 
 
-### Analyzing the Bundle Size
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/29ccw4xr3epme6jvg4gz.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Click on change carousel, to display new styles of carousel :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ho891v0q2py3swzl7z0i.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
